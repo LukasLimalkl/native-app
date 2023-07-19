@@ -1,0 +1,46 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "airbnb/hooks",
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "react-native"
+    ],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "no-unused-vars": "off",
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "indent": "off",
+        "lines-around-comment": [
+            "error",
+            {
+                "beforeBlockComment": true,
+                "afterBlockComment": true,
+                "beforeLineComment": true,
+                "afterLineComment": true,
+                "allowBlockStart": true,
+                "allowBlockEnd": true,
+                "allowObjectStart": true,
+                "allowObjectEnd": true,
+                "allowArrayStart": true,
+                "allowArrayEnd": true
+            }
+        ]
+    }
+}
