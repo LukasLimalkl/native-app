@@ -1,21 +1,20 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Main from './src/components/Main';
 import Title from './src/components/Title';
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#F5F5F5',
+    paddingTop:80,
   },
 });
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hello WOrd</Text>
         <Title/>
+        <Main/>
     </View>
   );
 }
