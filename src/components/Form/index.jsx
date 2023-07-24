@@ -3,8 +3,9 @@ import { Keyboard, Pressable, Text, TextInput, TouchableOpacity, Vibration, View
 import ResultCalc from './ResultadoCalc';
 import styles from './style';
 
-export default function Form() {
 
+export default function Form() {
+    
     const [valorFrete,setValorFrete] = useState(null);
     const [combustivel,setCombustivel] = useState(null);
     const [gastos, setGastos] = useState(null);
@@ -42,6 +43,8 @@ export default function Form() {
        setMessage('Preencha todos os campos');       
     };
 
+
+    
 
     return(
         <Pressable onPress={Keyboard.dismiss} style={styles.formContext}>
