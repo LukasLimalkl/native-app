@@ -1,6 +1,6 @@
 
 const loadModels = async () => {
-  const url = 'http://192.168.1.123:3333/data';
+  const url = 'https://api-node-hxq1.vercel.app/data';
 
     try {
       const response = await fetch(url);

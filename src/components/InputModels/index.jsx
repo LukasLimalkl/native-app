@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 import loadModels from '../../util/load-models';
 
 function Models() {
-  const [data, setData] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
 
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
         const models = await loadModels();
-        setData(models);
+        setData(models.models);
       } catch (error) {
         console.error('Erro ao carregar os dados:', error);
+      }finally{
+        setLoading(false);
       }
     };
 
@@ -19,12 +23,18 @@ function Models() {
   }, []);
 
   return (
-    <View>
-      {data (
+    <View style={{flex: 1, padding: 24}}>
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
         <FlatList
           data={data}
-          renderItem={({ item }) => <Text key={item}>{item}</Text>}
-          keyExtractor={(item) => item}
+          keyExtractor={({id}) => id}
+          renderItem={({item}) => (
+            <Text>
+              {item.id}, {item.nome}
+            </Text>
+          )}
         />
       )}
     </View>
