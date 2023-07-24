@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import Main from './src/components/Main';
 import Title from './src/components/Title';
 
@@ -13,8 +13,10 @@ const styles = StyleSheet.create({
 export default function App() {
   return (
     <View style={styles.container}>
+      <ScrollView>
         <Title/>
         <Main/>
+      </ScrollView>
     </View>
   );
 }
