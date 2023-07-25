@@ -1,5 +1,6 @@
+import { Picker } from '@react-native-picker/picker';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View } from 'react-native';
+import { View } from 'react-native';
 import loadModels from '../../util/load-models';
 
 function Models() {
@@ -23,20 +24,15 @@ function Models() {
   }, []);
 
   return (
-    <View style={{flex: 1, padding: 24}}>
-      {isLoading ? (
-        <ActivityIndicator />
-      ) : (
-        <FlatList
-          data={data}
-          keyExtractor={({id}) => id}
-          renderItem={({item}) => (
-            <Text>
-              {item.id}, {item.nome}
-            </Text>
-          )}
-        />
-      )}
+    <View>
+     <Picker
+        selectedValue={data.nome} 
+        onValueChange={(itemValue) => setData({ id: data.id, nome: itemValue })}
+      >
+        {data.map((year) => (
+          <Picker.Item key={year.id} label={year.nome} value={year.nome} />
+        ))}
+      </Picker>
     </View>
   );
 }
