@@ -1,7 +1,7 @@
 import { Picker as SelectPicker } from '@react-native-picker/picker';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import loadTruckYear from '../../util/load-year';
+import loadTruckYear from '../../util/loadTruckYear';
 
 function TruckYearPicker() {
   const [isLoading, setLoading] = useState(true);
