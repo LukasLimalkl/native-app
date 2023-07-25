@@ -1,5 +1,5 @@
 const loadTruckYear = async () => {
-    const url = 'https://api-node-hxq1.vercel.app/data/ano';
+    const url = 'https://api-node-hxq1.vercel.app/yeartruck';
   
       try {
         const response = await fetch(url);

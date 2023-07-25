@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Keyboard, Pressable, Text, TextInput, TouchableOpacity, Vibration, View } from 'react-native';
+import TruckModelPicker from '../InputModels';
+import TruckYearPicker from '../InputYear';
 import ResultCalc from './ResultadoCalc';
 import styles from './style';
-
 
 export default function Form() {
     
@@ -76,6 +77,8 @@ export default function Form() {
             placeholder="Ex. R$500,00"
             keyboardType="numeric"
             />
+            <TruckModelPicker/>
+            <TruckYearPicker/>
            <TouchableOpacity
             style={styles.formButton} 
             onPress={() => freteValidator()}

@@ -1,7 +1,7 @@
-import { StyleSheet, View } from 'react-native';
-import TruckModelPicker from './src/components/InputModels';
-import TruckYearPicker from './src/components/InputYear';
- 
+import { ScrollView, StyleSheet, View } from 'react-native';
+import Main from './src/components/Main';
+import Title from './src/components/Title';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -13,12 +13,10 @@ const styles = StyleSheet.create({
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <ScrollView>
+      <ScrollView>
         <Title/>
         <Main/>
-      </ScrollView> */}
-      <TruckModelPicker/>
-      <TruckYearPicker/>
+      </ScrollView>
     </View>
   );
 }

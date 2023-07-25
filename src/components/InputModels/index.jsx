@@ -1,4 +1,4 @@
-import { Picker } from '@react-native-picker/picker';
+import { Picker as SelectPicker } from '@react-native-picker/picker';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import loadTruckModel from '../../util/load-models';
@@ -12,8 +12,8 @@ function TruckModelPicker() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const models = await loadTruckModel();
-        setData(models.models);
+        const truckMarc = await loadTruckModel();
+        setData(truckMarc.models);
       } catch (error) {
         console.error('Erro ao carregar os dados:', error);
       }finally{
@@ -26,14 +26,14 @@ function TruckModelPicker() {
 
   return (
     <View>
-     <Picker
+     <SelectPicker
         selectedValue={selectedModel}
         onValueChange={(itemValue) => setSelectedModel(itemValue)}
       >
         {data.map((year) => (
-          <Picker.Item key={year.id} label={year.nome} value={year.nome} />
+          <SelectPicker.Item key={year.id} label={year.nome} value={year.nome} />
         ))}
-      </Picker>
+      </SelectPicker>
     </View>
   );
 }
