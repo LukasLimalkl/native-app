@@ -1,5 +1,5 @@
 
-const loadModels = async () => {
+const loadTruckModel = async () => {
   const url = 'https://api-node-hxq1.vercel.app/data';
 
     try {
@@ -14,4 +14,4 @@ const loadModels = async () => {
  
 };
 
-export default loadModels;
+export default loadTruckModel;

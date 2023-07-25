@@ -1,5 +1,6 @@
 import { StyleSheet, View } from 'react-native';
-import Models from './src/components/InputModels';
+import TruckModelPicker from './src/components/InputModels';
+import TruckYearPicker from './src/components/InputYear';
  
 const styles = StyleSheet.create({
   container: {
@@ -16,7 +17,8 @@ export default function App() {
         <Title/>
         <Main/>
       </ScrollView> */}
-      <Models/>
+      <TruckModelPicker/>
+      <TruckYearPicker/>
     </View>
   );
 }
