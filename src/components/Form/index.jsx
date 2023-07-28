@@ -15,6 +15,7 @@ export default function Form() {
     const [textButton, setTextButton] = useState('Calcular Frete');
     const [errorMessage, setErrorMessage] = useState('');
     const [result, setResult] = useState(false);
+    const [mediaTruck, setMediaTruck] = useState(null);
 
     const freteCalc = () => {
         const calcFormat = valorFrete.replace(',', '.');

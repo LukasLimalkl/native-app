@@ -19,8 +19,12 @@ function TruckModelPicker() {
       }
     };
 
+    
     fetchData();
   }, []);
+
+  
+
 
   useEffect(() => {
     const fetchModel = async (modelId) => {
@@ -36,6 +40,7 @@ function TruckModelPicker() {
     fetchModel(selectedMarca);
   }, [selectedMarca]);
 
+  
   return (
     <View>
      <SelectPicker
