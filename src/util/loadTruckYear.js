@@ -1,5 +1,5 @@
 const loadTruckYear = async () => {
-    const url = 'https://api-node-hxq1.vercel.app/yeartruck';
+    const url = 'https://api-node.cyclic.app/yeartruck';
   
       try {
         const response = await fetch(url);

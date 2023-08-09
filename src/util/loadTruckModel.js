@@ -1,6 +1,6 @@
 
 const loadTruckModel = async () => {
-  const url = 'https://api-node-hxq1.vercel.app/marcatruck';
+  const url = 'https://api-node.cyclic.app/marcatruck';
 
     try {
       const response = await fetch(url);

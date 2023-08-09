@@ -29,7 +29,7 @@ function TruckModelPicker() {
   useEffect(() => {
     const fetchModel = async (modelId) => {
       try {
-        const response = await fetch(`https://api-node-hxq1.vercel.app/models/${modelId}`);
+        const response = await fetch(`https://api-node.cyclic.app/models/${modelId}`);
         const modelsTruck =  await response.json();
         setModel(modelsTruck.models);
       } catch (error) {
