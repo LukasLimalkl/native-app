@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Keyboard, Pressable, ScrollView, Text, TextInput, TouchableOpacity, Vibration, View } from 'react-native';
+import { processSelectedMarc, processSelectedModel } from '../../util/postTruck';
 import TruckModelPicker from '../InputModels';
-import TruckYearPicker from '../InputYear';
+import TruckYearPicker, { processSelectedYear } from '../InputYear';
 import ResultCalc from './ResultadoCalc';
 import styles from './style';
 
@@ -48,6 +49,9 @@ export default function Form() {
         setResult(false); 
     };
 
+ 
+      
+
     return (
         <ScrollView>
             {result === false ? (
@@ -89,8 +93,8 @@ export default function Form() {
                     placeholder="Ex. R$500,00"
                     keyboardType="numeric"
                     />
-                    <TruckModelPicker/>
-                    <TruckYearPicker/>
+                    <TruckModelPicker onSelectMarca={processSelectedMarc} onSelectModel={processSelectedModel}/>
+                    <TruckYearPicker onSelectYear={processSelectedYear}/>
                 <TouchableOpacity
                     style={styles.formButton} 
                     onPress={() => freteValidator()}

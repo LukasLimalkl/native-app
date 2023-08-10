@@ -3,7 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import loadTruckModel from '../../util/loadTruckModel';
 
-function TruckModelPicker() {
+/* eslint-disable */
+
+
+function TruckModelPicker({onSelectModel,onSelectMarca}) {
   const [data, setData] = useState([]);
   const [selectedMarca, setSelectedMarca] = useState(null);
   const [model, setModel] = useState([]);
@@ -23,8 +26,6 @@ function TruckModelPicker() {
     fetchData();
   }, []);
 
-  
-
 
   useEffect(() => {
     const fetchModel = async (modelId) => {
@@ -40,12 +41,25 @@ function TruckModelPicker() {
     fetchModel(selectedMarca);
   }, [selectedMarca]);
 
-  
+
+  const handleMarcaSelection = (itemValue) => {
+    setSelectedModel(itemValue);
+    onSelectMarca(itemValue); 
+  };
+
+  const handleModelSelection = (itemValue) => {
+    setSelectedModel(itemValue);
+    onSelectModel(itemValue); 
+  };
+
+
+
+
   return (
     <View>
      <SelectPicker
         selectedValue={selectedMarca}
-        onValueChange={(itemValue) => setSelectedMarca(itemValue)}
+        onValueChange={handleMarcaSelection}
       >
         {data.map((marca) => (
           <SelectPicker.Item key={marca.id} label={marca.nome} value={marca.nome} />
@@ -53,7 +67,7 @@ function TruckModelPicker() {
       </SelectPicker>
       <SelectPicker
         selectedValue={selectedTruck}
-        onValueChange={(itemValue) => setSelectedTruck(itemValue)}
+        onValueChange={handleModelSelection}
       >
         {model.map((modelo) => (
           <SelectPicker.Item key={modelo.id} label={modelo.nome} value={modelo.nome} />

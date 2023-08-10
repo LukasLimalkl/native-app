@@ -2,34 +2,38 @@ import { Picker as SelectPicker } from '@react-native-picker/picker';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import loadTruckYear from '../../util/loadTruckYear';
+/* eslint-disable */
 
-function TruckYearPicker() {
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+function TruckYearPicker({ onSelectYear }) {
+  const [ano, setAno] = useState([]);
   const [selectedModel, setSelectedModel] = useState(null);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const truckYear = await loadTruckYear();
-        setData(truckYear.ano);
+        setAno(truckYear.ano);
       } catch (error) {
         console.error('Erro ao carregar os dados:', error);
-      }finally{
-        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
+  const handleYearSelection = (itemValue) => {
+    setSelectedModel(itemValue);
+    onSelectYear(itemValue); 
+  };
+
   return (
     <View>
-     <SelectPicker
+      <SelectPicker
         selectedValue={selectedModel}
-        onValueChange={(itemValue) => setSelectedModel(itemValue)}
+        onValueChange={handleYearSelection}
       >
-        {data.map((year) => (
+        <SelectPicker.Item label="Selecione o ano" value={null} />
+        {ano.map((year) => (
           <SelectPicker.Item key={year.id} label={year.ano} value={year.ano} />
         ))}
       </SelectPicker>
@@ -38,3 +42,8 @@ function TruckYearPicker() {
 }
 
 export default TruckYearPicker;
+
+export function processSelectedYear(selectedYear) {
+  console.log(selectedYear);
+  return selectedYear;
+}
