@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Keyboard, Pressable, ScrollView, Text, TextInput, TouchableOpacity, Vibration, View } from 'react-native';
-import postTruck, { processSelectedMarc, processSelectedMedia, processSelectedModel } from '../../util/postTruck';
+import postTruck, { getSelectedYear, processSelectedMarc, processSelectedMedia, processSelectedModel } from '../../util/postTruck';
+import TruckMediaPicker from '../InputMedia';
 import TruckModelPicker from '../InputModels';
 import TruckYearPicker, { processSelectedYear } from '../InputYear';
 import ResultCalc from './ResultadoCalc';
-import TruckMediaPicker from './inputMedia';
 import styles from './style';
 
 
@@ -19,6 +19,7 @@ export default function Form() {
     const [textButton, setTextButton] = useState('Calcular Frete');
     const [errorMessage, setErrorMessage] = useState('');
     const [result, setResult] = useState(false);
+
 
     const freteCalc = () => {
         const calcFormat = valorFrete.replace(',', '.');
@@ -45,14 +46,13 @@ export default function Form() {
             setTextButton('Calcular Novamente');
             setResult(true);
 
-            console.log('Marca:', processSelectedMarc());
-            console.log('Modelo:', processSelectedModel());
-            console.log('Ano:', processSelectedYear());
-            console.log('Média:', processSelectedMedia());
 
-
-            postTruck(processSelectedMarc(), processSelectedModel(), processSelectedYear(), processSelectedMedia());
-
+            postTruck(
+                getSelectedYear(), 
+                processSelectedModel(), 
+                processSelectedYear(), 
+                processSelectedMedia()
+              );
             return; 
         }
         validatorCalc();

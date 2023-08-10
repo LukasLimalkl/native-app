@@ -1,21 +1,19 @@
 
+
+
 export function processSelectedYear(selectedYear) {
-    console.log(selectedYear);
-    return selectedYear;
+   return selectedYear; 
 }
 
 export function processSelectedMarc(selectedMarca) {
-    console.log(selectedMarca);
     return selectedMarca;
   }
 
 export function processSelectedModel(selectedModel) {
-    console.log(selectedModel);
     return selectedModel;
   }
 
 export function processSelectedMedia(selectedMedia) {
-    console.log(selectedMedia);
     return selectedMedia;
   }
 

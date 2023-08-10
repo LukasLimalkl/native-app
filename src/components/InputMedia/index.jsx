@@ -26,6 +26,8 @@ function TruckMediaPicker({ onSelectMedia }) {
   }
   
 
+
+
 export default TruckMediaPicker;
 
 
