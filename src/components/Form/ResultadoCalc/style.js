@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         paddingTop:15,
         alignItems:'center',
         width:'100%',
+        marginBottom: 20
     },
 
     info: {
@@ -21,6 +22,12 @@ const styles = StyleSheet.create({
         color:'#212121',
         fontWeight:'bold',
     },
+
+    media: {
+        fontSize:30,
+        color:'#212121',
+        fontWeight:'bold',
+    }
 
 });
 

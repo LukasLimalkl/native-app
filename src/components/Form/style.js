@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
       borderTopLeftRadius:30,
       borderTopRightRadius:30,
       alignItems:'center',
-      paddingTop:30
+      paddingTop:30,
+      height:800
    },
 
    form:{
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     borderRadius:50,
     backgroundColor: '#f6f6f6',
     height:40,
-    margin:12,
+    margin:6,
     paddingLeft:10,
    },
 
@@ -52,6 +53,18 @@ const styles = StyleSheet.create({
       color:'#FF1493',
       fontWeight:'bold',
       paddingLeft:20,
+    },
+
+   buttonResult:{
+      borderRadius: 50,
+      alignItems: 'center',
+      justifyContent:'center',
+      width:'90%',
+      backgroundColor:'#FF5722',
+      paddingTop:14,
+      paddingBottom:14,
+      marginLeft:20,
+      marginTop:5,
     }
 
 });

@@ -50,58 +50,67 @@ export default function Form() {
 
     return (
         <ScrollView>
-            <Pressable onPress={Keyboard.dismiss} style={styles.formContext}>
-                {result === false ? (
-                    <View style={styles.form}>
-                        <Text style={styles.formLabel}>Valor total frete</Text>
-                <Text style={styles.errorMessage}>{errorMessage}</Text>
-                <TextInput
-                style={styles.formInput}
-                onChangeText={(e) => setValorFrete(e)} 
-                value={valorFrete} 
-                placeholder="Ex. R$ 9.500,00"
-                keyboardType="numeric"
-                />
-                <Text style={styles.formLabel}>Valor gasto com abestecimento</Text>
-                <Text style={styles.errorMessage}>{errorMessage}</Text>
-                <TextInput
-                style={styles.formInput}
-                onChangeText={(e) =>setCombustivel(e)}
-                value={combustivel} 
-                placeholder="Ex. R$3000,00"
-                keyboardType="numeric"
-                />
-                <Text style={styles.formLabel}>Valor de gastos da viagem</Text>
-                <Text style={styles.errorMessage}>{errorMessage}</Text>
-                <TextInput
-                style={styles.formInput}
-                onChangeText={(e) =>setGastos(e)}
-                value={gastos} 
-                placeholder="Ex. R$500,00"
-                keyboardType="numeric"
-                />
-                <TruckModelPicker/>
-                <TruckYearPicker/>
-            <TouchableOpacity
-                style={styles.formButton} 
-                onPress={() => freteValidator()}
-                title={textButton} >
-                    <Text style={styles.formTextButton}>{textButton}</Text>
+            {result === false ? (
+                <Pressable onPress={Keyboard.dismiss} style={styles.formContext}>
+                        <View style={styles.form}>
+                            <Text style={styles.formLabel}>Valor total frete</Text>
+                    <Text style={styles.errorMessage}>{errorMessage}</Text>
+                    <TextInput
+                    style={styles.formInput}
+                    onChangeText={(e) => setValorFrete(e)} 
+                    value={valorFrete} 
+                    placeholder="Ex. R$ 9.500,00"
+                    keyboardType="numeric"
+                    />
+                    <Text style={styles.formLabel}>Valor gasto com abestecimento</Text>
+                    <Text style={styles.errorMessage}>{errorMessage}</Text>
+                    <TextInput
+                    style={styles.formInput}
+                    onChangeText={(e) =>setCombustivel(e)}
+                    value={combustivel} 
+                    placeholder="Ex. R$3000,00"
+                    keyboardType="numeric"
+                    />
+                    <Text style={styles.formLabel}>Valor de gastos da viagem</Text>
+                    <Text style={styles.errorMessage}>{errorMessage}</Text>
+                    <TextInput
+                    style={styles.formInput}
+                    onChangeText={(e) =>setGastos(e)}
+                    value={gastos} 
+                    placeholder="Ex. R$500,00"
+                    keyboardType="numeric"
+                    />
+                    <Text style={styles.formLabel}>Media do caminhão</Text>
+                    <Text style={styles.errorMessage}>{errorMessage}</Text>
+                    <TextInput
+                    style={styles.formInput}
+                    onChangeText={(e) =>setMediaTruck(e)}
+                    value={mediaTruck} 
+                    placeholder="Ex. R$500,00"
+                    keyboardType="numeric"
+                    />
+                    <TruckModelPicker/>
+                    <TruckYearPicker/>
+                <TouchableOpacity
+                    style={styles.formButton} 
+                    onPress={() => freteValidator()}
+                    title={textButton} >
+                        <Text style={styles.formTextButton}>{textButton}</Text>
                 </TouchableOpacity>
-                    </View>
-                ) : (
-                    <>
-                        <ResultCalc messagem={messagem} calculo={calculo} />
-                        <TouchableOpacity
-                        style={styles.formButton} 
-                        onPress={() => freteValidator()}
-                        title={textButton} >
-                            <Text style={styles.formTextButton}>{textButton}</Text>
-                        </TouchableOpacity>
-                    </>
-        
-                )}
-            </Pressable>
+                        </View>
+                </Pressable>
+              ) : (
+                <>
+                    <ResultCalc messagem={messagem} calculo={calculo} media={mediaTruck}/>
+                    <TouchableOpacity
+                    style={styles.buttonResult} 
+                    onPress={() => freteValidator()}
+                    title={textButton} >
+                        <Text style={styles.formTextButton}>{textButton}</Text>
+                    </TouchableOpacity>
+                </>
+    
+            )}
         </ScrollView>
     );
 };
