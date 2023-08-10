@@ -20,18 +20,31 @@ export function processSelectedMedia(selectedMedia) {
   }
 
 
-const postTruck = async(truck,model,ano,media) => {
-    fetch('https://api-node.cyclic.app/media', {
-        method: 'POST',
-        body: JSON.stringify({
-            truck,
-            model,
-            ano,
-            media
-        })
-      })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
+const postTruck = async (truck, model, ano, media) => {
+    const requestData = {
+        truck,
+        model,
+        ano,
+        media
+    };
+
+    console.log('Dados a serem enviados:', requestData);
+
+    try {
+        const response = await fetch('https://api-node.cyclic.app/media', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestData)
+        });
+
+        const jsonResponse = await response.json();
+        console.log('Resposta da API:', jsonResponse);
+    } catch (error) {
+        console.error('Erro ao enviar requisição:', error);
+    }
 };
+
 
 export default postTruck;

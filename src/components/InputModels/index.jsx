@@ -43,16 +43,16 @@ function TruckModelPicker({onSelectModel,onSelectMarca}) {
 
 
   const handleMarcaSelection = (itemValue) => {
-    setSelectedModel(itemValue);
+    setSelectedMarca(itemValue);
     onSelectMarca(itemValue); 
   };
 
   const handleModelSelection = (itemValue) => {
-    setSelectedModel(itemValue);
+    setSelectedTruck(itemValue);
     onSelectModel(itemValue); 
   };
 
-
+  
 
 
   return (
@@ -61,6 +61,7 @@ function TruckModelPicker({onSelectModel,onSelectMarca}) {
         selectedValue={selectedMarca}
         onValueChange={handleMarcaSelection}
       >
+        <SelectPicker.Item label="Selecione a marca" value={null} />
         {data.map((marca) => (
           <SelectPicker.Item key={marca.id} label={marca.nome} value={marca.nome} />
         ))}
@@ -69,6 +70,7 @@ function TruckModelPicker({onSelectModel,onSelectMarca}) {
         selectedValue={selectedTruck}
         onValueChange={handleModelSelection}
       >
+        <SelectPicker.Item label="Selecione o modelo" value={null} />
         {model.map((modelo) => (
           <SelectPicker.Item key={modelo.id} label={modelo.nome} value={modelo.nome} />
         ))}

@@ -6,7 +6,7 @@ import loadTruckYear from '../../util/loadTruckYear';
 
 function TruckYearPicker({ onSelectYear }) {
   const [ano, setAno] = useState([]);
-  const [selectedModel, setSelectedModel] = useState(null);
+  const [selectedYear, setSelectedYear] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,14 +22,14 @@ function TruckYearPicker({ onSelectYear }) {
   }, []);
 
   const handleYearSelection = (itemValue) => {
-    setSelectedModel(itemValue);
+    setSelectedYear(itemValue);
     onSelectYear(itemValue); 
   };
 
   return (
     <View>
       <SelectPicker
-        selectedValue={selectedModel}
+        selectedValue={selectedYear}
         onValueChange={handleYearSelection}
       >
         <SelectPicker.Item label="Selecione o ano" value={null} />

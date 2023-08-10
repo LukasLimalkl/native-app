@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Keyboard, Pressable, ScrollView, Text, TextInput, TouchableOpacity, Vibration, View } from 'react-native';
-import { processSelectedMarc, processSelectedModel } from '../../util/postTruck';
+import postTruck, { processSelectedMarc, processSelectedMedia, processSelectedModel } from '../../util/postTruck';
 import TruckModelPicker from '../InputModels';
 import TruckYearPicker, { processSelectedYear } from '../InputYear';
 import ResultCalc from './ResultadoCalc';
+import TruckMediaPicker from './inputMedia';
 import styles from './style';
+
+
 
 export default function Form() {
     
@@ -16,12 +19,13 @@ export default function Form() {
     const [textButton, setTextButton] = useState('Calcular Frete');
     const [errorMessage, setErrorMessage] = useState('');
     const [result, setResult] = useState(false);
-    const [mediaTruck, setMediaTruck] = useState(null);
 
     const freteCalc = () => {
         const calcFormat = valorFrete.replace(',', '.');
         return setCalculo((calcFormat - combustivel - gastos).toFixed(2));
     };
+
+
 
     const validatorCalc = () => {
         if (calculo == null) {
@@ -40,6 +44,15 @@ export default function Form() {
             setMessage('O valor que irá sobrar é: ');
             setTextButton('Calcular Novamente');
             setResult(true);
+
+            console.log('Marca:', processSelectedMarc());
+            console.log('Modelo:', processSelectedModel());
+            console.log('Ano:', processSelectedYear());
+            console.log('Média:', processSelectedMedia());
+
+
+            postTruck(processSelectedMarc(), processSelectedModel(), processSelectedYear(), processSelectedMedia());
+
             return; 
         }
         validatorCalc();
@@ -49,7 +62,7 @@ export default function Form() {
         setResult(false); 
     };
 
- 
+    
       
 
     return (
@@ -86,13 +99,7 @@ export default function Form() {
                     />
                     <Text style={styles.formLabel}>Media do caminhão</Text>
                     <Text style={styles.errorMessage}>{errorMessage}</Text>
-                    <TextInput
-                    style={styles.formInput}
-                    onChangeText={(e) =>setMediaTruck(e)}
-                    value={mediaTruck} 
-                    placeholder="Ex. R$500,00"
-                    keyboardType="numeric"
-                    />
+                    <TruckMediaPicker  onSelectMedia={processSelectedMedia}/>
                     <TruckModelPicker onSelectMarca={processSelectedMarc} onSelectModel={processSelectedModel}/>
                     <TruckYearPicker onSelectYear={processSelectedYear}/>
                 <TouchableOpacity
@@ -105,7 +112,7 @@ export default function Form() {
                 </Pressable>
               ) : (
                 <>
-                    <ResultCalc messagem={messagem} calculo={calculo} media={mediaTruck}/>
+                    <ResultCalc messagem={messagem} calculo={calculo} />
                     <TouchableOpacity
                     style={styles.buttonResult} 
                     onPress={() => freteValidator()}
