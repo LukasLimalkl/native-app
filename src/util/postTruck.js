@@ -1,19 +1,3 @@
-export function processSelectedYear(selectedYear) {
-    return selectedYear;
-}
-
-export function processSelectedMarc(selectedMarca) {
-    return selectedMarca;
-}
-
-export function processSelectedModel(selectedModel) {
-    return selectedModel;
-}
-
-export function processSelectedMedia(selectedMedia) {
-    return selectedMedia;
-}
-
 const postTruck = async ({ truck, model, ano, media }) => {
     const requestData = {
         truck,
