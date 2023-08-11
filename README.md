@@ -8,19 +8,19 @@ Funcionalidades:
     Realiza cálculos para determinar a margem de lucro estimada em um frete e envia essas informações a um banco de dados, incluindo a marca, o modelo, o ano do caminhão e a média de consumo do veículo. Com o passar do tempo e o aumento da utilização por parte dos usuários, o aplicativo aprimorará sua capacidade de realizar cálculos mais precisos.
 
    
-Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
     A aplicação foi construída com React Native, utilizando o React Hooks Form em conjunto com o Zod para a validação do formulário.
 
 
-Instalação
+## Instalação
 
 Siga os passos abaixo para executar o projeto em seu ambiente local:
 
     Clone o repositório: git clone https://github.com/LukasLimalkl/native-app.git
     Acesse o diretório do projeto: cd native-app
     Instale as dependências: npm install
-Uso
+## Uso
 
 Após seguir os passos de instalação, você pode executar o projeto utilizando o seguinte comando:
 
@@ -30,7 +30,7 @@ Após seguir os passos de instalação, você pode executar o projeto utilizando
 
 
 
-Contribuição
+## Contribuição
 
 Contribuições são sempre bem-vindas! Se você quiser colaborar com o projeto, siga as etapas abaixo:
 
