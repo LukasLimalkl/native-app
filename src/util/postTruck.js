@@ -1,29 +1,25 @@
-
-
-
 export function processSelectedYear(selectedYear) {
-   return selectedYear; 
+    return selectedYear;
 }
 
 export function processSelectedMarc(selectedMarca) {
     return selectedMarca;
-  }
+}
 
 export function processSelectedModel(selectedModel) {
     return selectedModel;
-  }
+}
 
 export function processSelectedMedia(selectedMedia) {
     return selectedMedia;
-  }
+}
 
-
-const postTruck = async (truck, model, ano, media) => {
+const postTruck = async ({ truck, model, ano, media }) => {
     const requestData = {
         truck,
         model,
         ano,
-        media
+        media,
     };
 
     console.log('Dados a serem enviados:', requestData);
@@ -34,7 +30,7 @@ const postTruck = async (truck, model, ano, media) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(requestData)
+            body: JSON.stringify(requestData),
         });
 
         const jsonResponse = await response.json();
@@ -43,6 +39,5 @@ const postTruck = async (truck, model, ano, media) => {
         console.error('Erro ao enviar requisição:', error);
     }
 };
-
 
 export default postTruck;
