@@ -40,13 +40,6 @@ Contribuições são sempre bem-vindas! Se você quiser colaborar com o projeto,
     Envie para o repositório remoto: git push origin minha-nova-feature.
     Abra uma Pull Request no GitHub.
 
-# Frete Calc
-
-Calculadora de frete para caminhoneiros
-
-Funcionalidades:
-
-    Realiza cálculos para determinar a margem de lucro estimada em um frete e envia essas informações a um banco de dados, incluindo a marca, o modelo, o ano do caminhão e a média de consumo do veículo. Com o passar do tempo e o aumento da utilização por parte dos usuários, o aplicativo aprimorará sua capacidade de realizar cálculos mais precisos.
 
    
 ## Screenshots
