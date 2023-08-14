@@ -1,20 +1,11 @@
-import { StyleSheet, View } from 'react-native';
-import Main from './src/components/Main';
-import Title from './src/components/Title';
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F5F5F5',
-        paddingTop: 80,
-    },
-});
+import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import Routes from './src/routes';
 
 export default function App() {
     return (
-        <View style={styles.container}>
-            <Title />
-            <Main />
-        </View>
+        <NavigationContainer >
+            <Routes/>
+        </NavigationContainer>
     );
 }
