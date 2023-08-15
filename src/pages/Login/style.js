@@ -7,11 +7,10 @@ const styles = StyleSheet.create({
       backgroundColor: '#FFC107',
    },
 
-   containerLogo:{
-      flex: 2,
-      backgroundColor: '#FFC107',
-      justifyContent: 'center',
-      alignItems:'center',
+   containerHeader:{
+      marginTop: '14%',
+      marginBottom: '8%',
+      paddingStart: '5%',
    },
 
    containerForm:{
@@ -24,15 +23,22 @@ const styles = StyleSheet.create({
    },
 
    title:{
-      fontSize: 24,
-      fontWeight: 'bold',
+      fontSize: 20,
       marginTop: 28,
-      marginBottom: 12,
    },
 
-   text:{
-      color: '#a1a1a1'
 
+   input:{
+      borderBottomWidth: 1,
+      height: 40,
+      marginBottom: 12,
+      fontSize: 16,
+   },
+
+   message:{
+      fontSize: 28,
+      fontWeight:'bold',
+      color: '#FFF'
    },
 
    button:{
@@ -53,9 +59,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold'
    },
 
-   img:{
-      width: '100%',
-   }
+
 
 
 });
