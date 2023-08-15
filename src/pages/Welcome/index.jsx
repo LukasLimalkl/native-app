@@ -22,7 +22,7 @@ export default function Welcome() {
         <Text style={styles.text}>Faça o login para começar</Text>
 
         <TouchableOpacity onPress={() => navegation.navigate('Login')} style={styles.button}>
-          <Text style={styles.buttonText}>Acessar</Text>
+          <Text style={styles.buttonText}>Continuar</Text>
         </TouchableOpacity>
 
       </Animatable.View>

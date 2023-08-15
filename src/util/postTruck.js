@@ -1,15 +1,13 @@
-const postTruck = async ({ truck, model, ano, media }) => {
+const postTruck = async ({ placa, media }) => {
     const requestData = {
-        truck,
-        model,
-        ano,
+        placa,
         media,
     };
 
     console.log('Dados a serem enviados:', requestData);
 
     try {
-        const response = await fetch('https://api-node.cyclic.app/media', {
+        const response = await fetch('https://api-node.cyclic.app/truck', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

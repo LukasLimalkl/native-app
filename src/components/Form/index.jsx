@@ -12,8 +12,6 @@ import {
 } from 'react-native';
 import { z } from 'zod';
 import postTruck from '../../util/postTruck';
-import TruckModelPicker from '../InputModels';
-import TruckYearPicker from '../InputYear';
 import ResultCalc from './ResultadoCalc';
 import styles from './style';
 
@@ -23,17 +21,8 @@ const formSchema = z
         combustivel: z.number().positive(),
         gastos: z.number().positive(),
         media: z.number().positive(),
-        marca: z.string().nonempty({
-            message: 'Selecione uma marca',
-        }),
-        model: z.string().nonempty({
-            message: 'Selecione uma marca',
-        }),
-        year: z.number().positive(),
     })
-    .required({
-        message: 'Preencha todos os campos',
-    });
+    .required();
 
 export default function Form() {
     const [messagem, setMessage] = useState('');
@@ -41,16 +30,13 @@ export default function Form() {
 
     const { control, handleSubmit, watch, setValue, formState, reset } =
         useForm({
+            resolver: zodResolver(formSchema),
             defaultValues: {
                 valorFrete: 0,
                 combustivel: 0,
                 gastos: 0,
                 media: 0,
-                year: 0,
-                marca: undefined,
-                model: undefined,
             },
-            zodResolver: zodResolver(formSchema),
         });
 
     const { combustivel, gastos, valorFrete } = watch();
@@ -67,10 +53,7 @@ export default function Form() {
         setMessage('Preencha todos os campos');
 
         postTruck({
-            ano: data.year,
             media: data.media,
-            model: data.model,
-            truck: data.marca,
         });
     };
 
@@ -86,6 +69,7 @@ export default function Form() {
                                 combustivel: 0,
                                 gastos: 0,
                                 valorFrete: 0,
+                                media: 0
                             },
                             {
                                 keepIsSubmitted: false,
@@ -157,7 +141,7 @@ export default function Form() {
                         name="combustivel"
                     />
 
-                    <Text style={styles.formLabel}>Insira um valor válido</Text>
+                    <Text style={styles.formLabel}>Valor dos gastos com a viagem</Text>
 
                     {errors.gastos && (
                         <Text style={styles.errorMessage}>
@@ -197,7 +181,7 @@ export default function Form() {
                         render={({ field: { onChange, onBlur, value } }) => (
                             <TextInput
                                 style={styles.formInput}
-                                placeholder="Ex. R$500,00"
+                                placeholder="Ex. 2.4"
                                 keyboardType="numeric"
                                 onBlur={onBlur}
                                 onChangeText={onChange}
@@ -207,25 +191,6 @@ export default function Form() {
                         name="media"
                     />
 
-                    <TruckModelPicker
-                        onSelectMarca={(value) => setValue('marca', value)}
-                        onSelectModel={(value) => setValue('model', value)}
-                    />
-
-                    {errors.model && (
-                        <Text style={styles.errorMessage}>
-                            Insira um valor válido
-                        </Text>
-                    )}
-
-                    {errors.marca && (
-                        <Text style={styles.errorMessage}>
-                            Insira um valor válido
-                        </Text>
-                    )}
-                    <TruckYearPicker
-                        onSelectYear={(value) => setValue('year', value)}
-                    />
                     <TouchableOpacity
                         style={styles.formButton}
                         onPress={() => handleSubmit(onSubmit)()}

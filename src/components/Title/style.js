@@ -4,15 +4,12 @@ const styles = StyleSheet.create({
 
     boxTitle: {
         alignItems:'center',
-        justifyContent:'center',
-        padding:10,
+        backgroundColor: '#FFC107',
     },
 
-    textTitle: {
-        color:'#FF5722',
-        fontSize:24,
-        fontWeight:'bold',
-    },
+    img:{
+        width: 250
+     }
 
 });
 
