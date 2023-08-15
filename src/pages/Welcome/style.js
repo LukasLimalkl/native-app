@@ -4,7 +4,14 @@ const styles = StyleSheet.create({
 
    container:{
     
+   },
+
+   img:{
+      width: '100%',
+      borderRadius:'50%',
+      
    }
+
 
 });
 
