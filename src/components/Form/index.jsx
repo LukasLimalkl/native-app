@@ -1,4 +1,3 @@
-import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import {
@@ -10,34 +9,16 @@ import {
     TouchableOpacity
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { z } from 'zod';
 import postTruck from '../../util/postTruck';
 import ResultCalc from './ResultadoCalc';
 import styles from './style';
 
 
-const formSchema = z
-    .object({
-        valorFrete: z.number().positive(),
-        combustivel: z.number().positive(),
-        gastos: z.number().positive(),
-        media: z.number().positive(),
-    }).required();
-
 export default function Form() {
     const [messagem, setMessage] = useState('');
     const [textButton, setTextButton] = useState('Calcular Frete');
 
-    const { control, handleSubmit, watch, formState, reset } =
-        useForm({
-            defaultValues: {
-                valorFrete: 0,
-                combustivel: 0,
-                gastos: 0,
-                media: 0,
-            },
-            resolver: zodResolver(formSchema)
-        });
+    const { control, handleSubmit, watch, formState, reset } = useForm();
 
     const { combustivel, gastos, valorFrete } = watch();
 
@@ -106,7 +87,6 @@ export default function Form() {
                                 onBlur={onBlur}
                                 onChangeText={onChange}
                                 value={value}
-                                
                             />
                         )}
                         name="valorFrete"
