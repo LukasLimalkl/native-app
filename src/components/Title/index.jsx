@@ -1,12 +1,14 @@
 import React from 'react';
-import { Image, View } from 'react-native';
+import { Image } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import FreteCalc from '../../assets/FreteCalcForm.png';
 import styles from './style';
 
+
 export default function Title() {
     return(
-        <View style={styles.boxTitle}>
+        <Animatable.View animation="fadeInLeft" delay={500} style={styles.boxTitle}>
             <Image  source={FreteCalc} style={styles.img} resizeMode="contain"/>
-        </View>
+        </Animatable.View>
     );
 };

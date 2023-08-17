@@ -61,12 +61,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '90%',
-        backgroundColor: '#FFC107',
+        backgroundColor: 'black',
         paddingTop: 14,
         paddingBottom: 14,
         marginLeft: 20,
         marginTop: 5,
     },
+
+   
+
 });
 
 export default styles;

@@ -7,13 +7,14 @@ import {
     ScrollView,
     Text,
     TextInput,
-    TouchableOpacity,
-    View,
+    TouchableOpacity
 } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import { z } from 'zod';
 import postTruck from '../../util/postTruck';
 import ResultCalc from './ResultadoCalc';
 import styles from './style';
+
 
 const formSchema = z
     .object({
@@ -21,22 +22,21 @@ const formSchema = z
         combustivel: z.number().positive(),
         gastos: z.number().positive(),
         media: z.number().positive(),
-    })
-    .required();
+    }).required();
 
 export default function Form() {
     const [messagem, setMessage] = useState('');
     const [textButton, setTextButton] = useState('Calcular Frete');
 
-    const { control, handleSubmit, watch, setValue, formState, reset } =
+    const { control, handleSubmit, watch, formState, reset } =
         useForm({
-            resolver: zodResolver(formSchema),
             defaultValues: {
                 valorFrete: 0,
                 combustivel: 0,
                 gastos: 0,
                 media: 0,
             },
+            resolver: zodResolver(formSchema)
         });
 
     const { combustivel, gastos, valorFrete } = watch();
@@ -49,9 +49,6 @@ export default function Form() {
         setMessage('O valor que irá sobrar é: ');
         setTextButton('Calcular Novamente');
 
-        setTextButton('Calcular');
-        setMessage('Preencha todos os campos');
-
         postTruck({
             media: data.media,
         });
@@ -59,7 +56,7 @@ export default function Form() {
 
     if (isValid && isSubmitted) {
         return (
-            <ScrollView>
+            <ScrollView  >
                 <ResultCalc messagem={messagem} calculo={result} />
                 <TouchableOpacity
                     style={styles.buttonResult}
@@ -87,7 +84,7 @@ export default function Form() {
     return (
         <ScrollView>
             <Pressable onPress={Keyboard.dismiss} style={styles.formContext}>
-                <View style={styles.form}>
+                <Animatable.View  animation="fadeInUp" delay={500} style={styles.form}>
                     <Text style={styles.formLabel}>Valor total frete</Text>
 
                     {errors.valorFrete && (
@@ -109,6 +106,7 @@ export default function Form() {
                                 onBlur={onBlur}
                                 onChangeText={onChange}
                                 value={value}
+                                
                             />
                         )}
                         name="valorFrete"
@@ -198,7 +196,7 @@ export default function Form() {
                     >
                         <Text style={styles.formTextButton}>{textButton}</Text>
                     </TouchableOpacity>
-                </View>
+                </Animatable.View>
             </Pressable>
         </ScrollView>
     );

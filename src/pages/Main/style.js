@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
 
    container:{
       backgroundColor: '#FFC107',
+      height:'100%'
    },
 
 
