@@ -31,6 +31,7 @@ export default function Form() {
         setTextButton('Calcular Novamente');
 
         postTruck({
+            placa: data.placa,
             media: data.media,
         });
     };
@@ -167,6 +168,32 @@ export default function Form() {
                             />
                         )}
                         name="media"
+                    />
+
+                    <Text style={styles.formLabel}>Placa do caminhão</Text>
+
+                    {errors.media && (
+                        <Text style={styles.errorMessage}>
+                            Insira uma Placa valida
+                        </Text>
+                    )}
+
+                    <Controller
+                        control={control}
+                        rules={{
+                            required: true,
+                        }}
+                        render={({ field: { onChange, onBlur, value } }) => (
+                            <TextInput
+                                style={styles.formInput}
+                                placeholder="Ex. ABC1020"
+                                keyboardType="default"
+                                onBlur={onBlur}
+                                onChangeText={onChange}
+                                value={value}
+                            />
+                        )}
+                        name="placa"
                     />
 
                     <TouchableOpacity
